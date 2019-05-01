@@ -1,0 +1,14 @@
+This is a simple but helpful HTML element that lets you pack long snippets of text into a compact format. This way it doesn’t take up the entire space on the page.
+
+HTML input:
+
+<div style=”width: 25%; height: 50px; overflow: auto; scrollbar-face-color: #CE7E00; scrollbar-shadow-color: #FFFFFF; br /scrollbar-highlight-color: #6F4709; scrollbar-3dlight-color:#11111; scrollbar-darkshadow-color: #6F4709; br /scrollbar-track-color: #FFE8C1; scrollbar-arrow-color: #6F4709;”>Your text will show here. And you can scroll down to go through all of it. You just have to add a sufficient amount of text to make the scrollbars show. Obviously, this is not enough,o let’s assume we have a little more to say. Eventually, the scrollbars will come in handy. That’s it! :)</div>
+
+Output demo:
+
+Your text will show here. And you can scroll down to go through all of it. You just have to add a sufficient amount of text to make the scrollbars show. Obviously, this is not enough,o let’s assume we have a little more to say. Eventually, the scrollbars will come in handy. That’s it! :)
+You can play with the colors and the size of the text box to make it fit your needs.
+
+If you desire something a little fancier, you can also fetch code for a customizable comment box from Quackit. They offer several templates, but you can also use their editor to manually change and teset (run) your custom code
+
+
