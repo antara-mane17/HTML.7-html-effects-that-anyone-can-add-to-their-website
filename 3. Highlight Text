@@ -1,0 +1,9 @@
+With a simple <span> HTML tag you can add a ton of effects to your text or images. Note that not all of them work across browsers. The ones mentioned here work in Google Chrome, Microsoft Edge, and Mozilla Firefox.
+
+Input:
+
+<span style=”background-color: #FFFF00″>Your highlighted text here.</span>
+
+Output demo:
+
+Your highlighted text here.
