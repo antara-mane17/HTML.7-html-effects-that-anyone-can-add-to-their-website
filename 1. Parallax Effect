@@ -1,0 +1,173 @@
+What Is a Parallax Effect?
+Dictionary.com defines parallax as:
+
+“[T]he apparent displacement of an observed object due to a change in the position of the observer.”
+
+Using a combination of plugins and .ini files — the files used by Rainmeter to load skins or widgets onto your desktop — Rainmeter allows your mouse to act as a camera. As your mouse moves, your images shift to create a 3D effect.
+
+parallax_explained
+
+
+Good-looking results are easy to achieve. That said, it takes a fair amount of creativity to achieve truly spectacular results. For example, check out this Firewatch theme created by reddit user /u/thefawxyone.
+
+parallax_example
+
+Word of warning: If you’d like to create a detailed, multi-layered example like the one above, some previous experience with graphic design programs like Photoshop (our idiots guide to Photoshop) and GIMP (our GIMP walkthrough) is required. We will not delve into how to create a complex background with hidden program launchers and VU meters. Our parallax effect will achieve a simple, yet impressive, four-layer backdrop.
+
+An Idiot's Guide to Photoshop, Part 1: Easy Photoshop 
+An Idiot's Guide to Photoshop, Part 1: Easy Photoshop
+At first glance Photoshop is confusing, but you can quickly be on your way to becoming a Photoshop guru. This is our introductory guide on how to do basic functions in Photoshop.
+READ MORE
+Parts of the Parallax
+To use this effect, let’s go over the concept of layers briefly. Rainmeter achieves the parallax effect by creating several layers, which simulate one complete background.
+
+There are two essential parts to the Parallax effect; the foreground, and the background. The foreground is composed of several .png image files, ranging from smallest to largest. The larger images will move more than the smaller images. This simulates depth of field on your desktop. Image files must be in transparent .png format, which removes white backgrounds from your images.
+
+JPEG, GIF, or PNG? Image Filetypes Explained and Tested 
+JPEG, GIF, or PNG? Image Filetypes Explained and Tested
+Do you know the differences between JPEGs, GIFs, PNGs, and other image filetypes? Do you know when you should use one instead of the other? Fear not, MakeUseOf explains everything!
+READ MORE
+Choosing the Parts
+I will simulate a falling Bart from The Simpsons using the parallax effect. Three image types are required for the effect: a falling Bart, some clouds particular to the cartoon style of The Simpsons, and a sky background.
+
+Create a folder on your desktop named parallax source to save your image files. This will make it easier to add your images to Rainmeter. Through Google search, I found a .png image of falling Bart. You may have to create a transparent .png image yourself.
+
+How To Make Good Use Of Google's Search Operators 
+How To Make Good Use Of Google's Search Operators
+With operators, you're able to display results that pertain only to certain websites, search through a range of numbers, or even completely exclude a word from your results. When you master the use of Google's...
+READ MORE
+ bart_falling
+
+Next, I’ll need cloud and background images. Remember, every element must be present in its own .png file. I found this image of clouds in the classic Simpson’s style online:
+
+clouds
+
+I proceeded to separate some of the clouds with Photoshop and create  separate image files for the three prominent clouds. For the background, I took color samples of the bottom and top shades of blue in the original image and created my own gradient. In total, five image files will be used, including the background.
+
+Quick 3-Color CSS3 Gradient Generator: Easily Create Linear & Radial Gradients 
+Quick 3-Color CSS3 Gradient Generator: Easily Create Linear & Radial Gradients
+READ MORE
+Name your background background.png and name the images you are using for your parallax as parallax[x].png. The [x] corresponds to the layer level, starting from 0. The smallest image should be titled parallax0.png, the second smallest, parallax1.png, and so on. This is what your folder should look like:
+
+
+files_in_folders
+
+Positioning the Parts
+Now, position your .png files according to your desktop resolution. Check your desktop resolution by right-clicking your Desktop and selecting Display Settings. Click on Advanced display settings and select the Recommended settings under Resolution. These two numbers correspond to the pixel width and height of your display monitor.
+
+Graphic Display Resolutions - What Do The Numbers Mean? [MakeUseOf Explains] 
+Graphic Display Resolutions - What Do The Numbers Mean? [MakeUseOf Explains]
+Display resolutions can be a rather cryptic business, with multiple standards used to describe the same display resolution in 10 different ways. All of those technical terms tend to change based on the display's purpose...
+READ MORE
+Create a transparent document the size of your monitor resolution with an added 100 pixels to your length and width. Drop your files into this frame and orient the images to your liking.
+
+resolution_and_transparency
+
+The way you orient your images here is the way you will see them in your background. Once you’ve fit all your images into your frame, proceed with creating your .ini files.
+
+Rainmeter Folder Layout
+In the directory C:\Users\Rosebud\Documents\Rainmeter\Skins create a new folder named Parallax Effect.
+
+In this folder, create three more folders and name them: @Resources, Background, and Parallax. The @Resources folder will hold all of your images, the Background folder will hold your Background.ini file to activate your background, and the Parallax folder will hold your Parallax.ini file to activate your parallax images.
+
+folder_layout
+
+Open the @Resources folder and create a folder named Images. Add your background.png file to this directory. Add another folder to this directory, and name it after your parallax effect. I’ve named mine Bart. Add your parallax[x].png images to this folder. Your Images folder should now look like this.
+
+images_folder
+
+That’s it for image files. Now, you can begin achieving the parallax effect. In the root Parallax Effect directory (C:\Users\Rosebud\Documents\Rainmeter\Skins\Parallax Effect) create a new text file. Input the following code into this new documents.
+
+[Variables]
+ThemeDisplayWidth=1440
+ThemeDisplayHeight=900
+Name this file ParallaxSettings.inc, minding the .inc extension. This file will define the resolution of your parallax. Replace 1440 and 900 with your own resolution and save. You will also need a simple plugin, which tracks your mouse movements to move your parallax images. Download the .rmskin here to install it into Rainmeter automatically.
+
+rainmeter_mousexy
+
+Next, open your Background folder. Right-click within the folder and select New > Text Document. Double-click this document to edit, and paste the following script into the file.
+
+[Rainmeter]
+Update=-1
+SkinHeight=#ThemeDisplayHeight#
+SkinWidth=#ThemeDisplayWidth#
+
+[Variables]
+@Include=#ROOTCONFIGPATH#ParallaxSettings.inc
+P=#@#Images/
+
+[Background]
+Meter=Image
+SolidColor=33,0,2,255
+W=#SCREENAREAWIDTH#
+H=#SCREENAREAHEIGHT#
+
+[Parallax0]
+Meter=Image
+ImageName=#P#background.png
+X=((#SCREENAREAWIDTH# / 2) - ([Parallax0:W] / 2))
+Y=0
+DynamicVariables=1
+Save this file as Background.ini, ensuring that you have added the .ini extension. Next, open your Parallax folder. Create a text document, and paste the following into this file.
+
+[Rainmeter]
+Update=20
+SkinHeight=#ThemeDisplayHeight#
+SkinWidth=#ThemeDisplayWidth#
+
+[Variables]
+@Include=#ROOTCONFIGPATH#ParallaxSettings.inc
+P=#@#Images/Bart/parallax
+
+[MouseX]
+Measure=Plugin
+Plugin=MouseXY
+Dimension=X
+
+[MouseY]
+Measure=Plugin
+Plugin=MouseXY
+Dimension=Y
+
+[Parallax1]
+Meter=Image
+ImageName=#P#0.png
+X=(((#SCREENAREAWIDTH# / 2) - ([Parallax1:W] / 2))-(([MouseX]-(#SCREENAREAWIDTH# / 2)) / 80))
+Y=(0-(([MouseY]-#SCREENAREAHEIGHT# / 2) / 80))
+DynamicVariables=1
+
+[Parallax2]
+Meter=Image
+ImageName=#P#1.png
+X=(((#SCREENAREAWIDTH# / 2) - ([Parallax2:W] / 2))-(([MouseX]-(#SCREENAREAWIDTH# / 2)) / 60))
+Y=(0-(([MouseY]-#SCREENAREAHEIGHT# / 2) / 60))
+DynamicVariables=1
+
+[Parallax3]
+Meter=Image
+ImageName=#P#2.png
+X=(((#SCREENAREAWIDTH# / 2) - ([Parallax3:W] / 2))-(([MouseX]-(#SCREENAREAWIDTH# / 2)) / 30))
+Y=(0-(([MouseY]-#SCREENAREAHEIGHT# / 2) / 30))
+DynamicVariables=1
+
+[Parallax4]
+Meter=Image
+ImageName=#P#3.png
+X=(((#SCREENAREAWIDTH# / 2) - ([Parallax4:W] / 2))-(([MouseX]-(#SCREENAREAWIDTH# / 2)) / 20))
+Y=5
+DynamicVariables=1
+You must change the P variable under your [Variables] parameter to the title of your parallax images folder. My P variable is #@#Images/Bart/parallax, for example. Only change the middle title, and keep the rest the same.
+
+bart_parallax
+
+The Result
+Open your Manage Rainmeter window by opening your taskbar icon drawer and clicking the Rainmeter icon. Click on the Refresh all button and locate your Parallax Effect folder. Open your newly created Background and Parallax folders and Load your .ini files by double-clicking them. Finally, check Click through in the Manage Rainmeter window for both .ini files and your parallax effect should be complete.
+
+bart_parallax
+
+The above script allows for a subtle effect. If you’d like to make the effect more dramatic, lower the number parameters present in the Parallax.ini file by 10 or 20 (do not repeat numbers or include numbers below 0).
+
+parallax_percentage
+
+Remember to save your .ini file and refresh your skin to enact the effect.
+
