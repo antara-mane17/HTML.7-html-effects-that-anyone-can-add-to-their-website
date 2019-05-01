@@ -1,0 +1,12 @@
+
+Likewise, you can change the color of your text or add a background image. This one only becomes really exciting if your text has a big enough size, which is why I also increased the font size.
+
+Input:
+
+<span style=”background-image: url(//static.makeuseof.com/wp-content/uploads/2017/09/Background-Image.jpg); font-size: 20pt”>MakeUseOf presents…</span>
+
+Note that you could also add the style and font elements to a <strong> tag for the same effect, plus bolded text.
+
+Output demo:
+
+MakeUseOf presents…
