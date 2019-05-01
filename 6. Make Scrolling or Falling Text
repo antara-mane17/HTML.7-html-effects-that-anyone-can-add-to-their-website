@@ -1,0 +1,14 @@
+
+When you search for “marquee html” on Google, you’ll discover a little Easter Egg. See the scrolling search result count? That’s an effect created by the now obsolete marquee tag. While this HTML feature has been deprecated, most browser still support it.
+
+Input:
+
+<marquee>Make it scroll, baby!</marquee>
+
+Output demo:
+
+Make it scroll, baby!
+
+You can add further attributes to control the scrolling behavior, background color, direction, height, and more. These effects can become quite irritating if you overdo it.
+
+
