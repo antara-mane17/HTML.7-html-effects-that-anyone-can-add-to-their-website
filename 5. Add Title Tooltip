@@ -1,0 +1,10 @@
+
+A title tooltip comes up when you scroll with the mouse over a piece of “manipulated” text or image. You know these from images or linked text. Here is how you can add this one to plain text.
+
+Input:
+
+<span title=”See, this is the tooltip. :)”>Move your mouse over me!</span>
+
+Output demo:
+
+Move your mouse over me!
